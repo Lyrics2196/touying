@@ -1918,16 +1918,32 @@
     } else {
       let pad-args = (:)
       if "x" in margin {
-        pad-args.x = -to-abs(margin.x)
+        if type(margin.x) == length {
+          pad-args.x = -margin.x
+        } else {
+          pad-args.x = -to-abs(margin.x)
+        }
       }
       if "left" in margin {
-        pad-args.left = -to-abs(margin.left)
+        if type(margin.left) == length {
+          pad-args.left = -margin.left
+        } else {
+          pad-args.left = -to-abs(margin.left)
+        }
       }
       if "right" in margin {
-        pad-args.right = -to-abs(margin.right)
+        if type(margin.right) == length {
+          pad-args.right = -margin.right
+        } else {
+          pad-args.right = -to-abs(margin.right)
+        }
       }
       if "rest" in margin {
-        pad-args.x = -to-abs(margin.rest)
+        if type(margin.reset) == length {
+          pad-args.x = -margin.rest
+        } else {
+          pad-args.x = -to-abs(margin.rest)
+        }
       }
       pad(..pad-args, cell(it))
     }
