@@ -1939,7 +1939,7 @@
         }
       }
       if "rest" in margin {
-        if type(margin.reset) == length {
+        if type(margin.rest) == length {
           pad-args.x = -margin.rest
         } else {
           pad-args.x = -to-abs(margin.rest)
