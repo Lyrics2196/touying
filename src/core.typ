@@ -1912,8 +1912,7 @@
     if type(margin) == length {
       pad(x: -margin, cell(it))
     } else if (
-      type(margin) == ratio 
-      or type(margin) == relative
+      type(margin) == ratio or type(margin) == relative
     ) {
       pad(x: -to-abs(margin), cell(it))
     } else {
@@ -1933,7 +1932,6 @@
       pad(..pad-args, cell(it))
     }
   }
-
 }
 
 // get bottom pad for footer
@@ -2269,7 +2267,6 @@
     utils.call-or-display(self, self.at("page-preamble", default: none))
     utils.call-or-display(self, self.at("default-page-preamble", default: none))
   }
-
 
   self.subslide = 1
   // for single page slide, get the repetitions
