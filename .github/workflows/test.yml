@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
@@ -42,16 +42,12 @@ jobs:
 
   typstyle:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@main
-        with:
-          ref: ${{ github.head_ref }}
+        uses: actions/checkout@v4
       - name: Run typstyle
         uses: typstyle-rs/typstyle-action@main
-      - name: Push
-        uses: stefanzweifel/git-auto-commit-action@master
-        with:
-          commit_message: "style: format using typstyle"
+      - name: Check for changes
+        # Fails the CI job if typstyle modified any files.
+        # This ensures developers format their code before merging.
+        run: git diff --exit-code
